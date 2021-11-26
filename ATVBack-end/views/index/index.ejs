@@ -1,0 +1,95 @@
+﻿<h1 class="titulopag">BOOK NOTE</h1>
+
+<h3 class="subtitulopag">Your personal book database!</h3>
+
+<div class="pad">
+	<label for="titulo">Titulo</label>
+	<input type="text" id="titulo" name="titulo" maxlength="50" />
+</div>
+
+<div class="pad">
+	<label for="ano">Ano de lançamento</label>
+	<input type="ano" id="ano" name="ano" maxlength="50" />
+</div>
+
+<div class="pad">
+	<label for="autor">Autor(a)</label>
+	<input type="autor" id="autor" name="autor" maxlength="50" />
+</div>
+
+<div class="pad">
+	<label for="paginas">Número de páginas</label>
+	<input type="paginas" id="paginas" name="paginas" maxlength="50" />
+</div>
+
+<div class="pad">
+	<button type="button" id="buttonCriar">Criar post de livro</button>
+</div>
+
+<script type="text/javascript">
+
+	let titulo = document.getElementById("titulo");
+	let ano = document.getElementById("ano");
+	let autor = document.getElementById("autor");
+	let paginas = document.getElementById("paginas");
+	let buttonCriar = document.getElementById("buttonCriar");
+
+	async function criarLivro() {
+		if (!titulo.value) {
+			alert("O titulo é obrigatório");
+			return;
+		}
+
+		if (!ano.value) {
+			alert("O ano é obrigatório");
+			return;
+		}
+
+		if (!autor.value) {
+			alert("O autor é obrigatório");
+			return;
+		}
+
+		if (!paginas.value) {
+			alert("O número de páginas é obrigatório");
+			return;
+		}
+
+		// Cria um objeto com os valores que serão enviados para o servidor.
+		let dadosParaEnvio = {
+			titulo: titulo.value,
+			ano: ano.value,
+			autor: autor.value,
+			paginas: paginas.value
+		};
+
+		let opcoes = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+		    },
+		    body: JSON.stringify(dadosParaEnvio)
+		};
+
+		try {
+			let response = await fetch("/criarLivro", opcoes);
+
+			if (response.ok) {
+				// Limpa os campos para facilitar a criação do proximo livro.
+				titulo.value = "";
+				ano.value = "";
+				autor.value = "";
+				paginas.value = "";
+
+				alert("Livro criado com sucesso!");
+			} else {
+				alert("Erro ao criar livro!");
+			}
+		} catch (ex) {
+			alert("Erro de rede: " + ex.message);
+		}
+	}
+
+	buttonCriar.onclick = criarLivro;
+
+</script>
