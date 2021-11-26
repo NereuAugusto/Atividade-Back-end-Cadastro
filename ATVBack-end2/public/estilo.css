@@ -1,0 +1,27 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5dc;
+}
+
+.titulopag{
+    font-family: 'Montagu Slab', serif;
+    padding: 0 0 0 10px;
+    font-size: 50px;
+    margin: 0;
+}
+
+.subtitulopag{
+    font-family: 'Oswald';
+    padding: 0 0 30px 10px;
+    font-size: 25px;
+    margin: 0;
+}
+
+.pad{
+    background-color: #fff8dc;
+    padding: 0 0 0 5px;
+}
+
+.esp{
+    padding: 0 0 5px 20px;
+}

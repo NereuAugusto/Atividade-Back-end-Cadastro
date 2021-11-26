@@ -1,0 +1,33 @@
+﻿<h1 class="titulopag">BOOK NOTE</h1>
+
+<h3 class="subtitulopag">
+	Lista de livros cadastrados
+</h3>
+
+<% for (let i = 0; i < livro.length; i++) { %>
+<div>
+
+	<h2 class="pad">
+		<%= livro[i].titulo %>
+	</h2>
+	
+	<div class="esp">
+		<p>
+			Id: <%= livro[i].id %>
+		</p>
+
+		<p>
+			Ano de publicação: <%= livro[i].ano %>
+		</p>
+
+		<p>
+			Autor(a): <%= livro[i].autor %>
+		</p>
+
+		<p>
+			Número de páginas: <%= livro[i].paginas %>
+		</p>
+	</div>
+
+</div>
+<% } %>
